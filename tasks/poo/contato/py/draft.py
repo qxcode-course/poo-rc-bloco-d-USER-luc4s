@@ -3,6 +3,7 @@ class Fone:
         self.id: str
         self.number: str
     
+    
     def getId(self) -> str:
         return self.id
     def getNumber(self) -> str:

@@ -12,8 +12,13 @@
         },
         {
             "label": "2025-11-24_19-28-58",
-            "content": "class Fone:\n    def __init__(self, id: str, number: str):\n        self.id: str\n        self.number: str\n    \n    def getId(self) -> str:\n        return self.id\n    def getNumber(self) -> str:\n        return self.number\n    \n    def __str__(self) -> str:\n        return f\"{self.id}:{self.number}\"\n    \nclass Contact:\n    def __init__(self, name: str):\n        self.name: str\n        self.favorited: bool\n        self.fones: list[Fone] =[] \n\n    def addFone(id: str, number: str) -> None:\n        self.fones.append(Fone(id, number))\n\n\n    def getName(self) -> str:\n        return self.name\n    \n\n    def __str__(self) -> str:\n        return f\"\"",
+            "content": "@@ -102,21 +102,16 @@\n tr%0A    %0A\n-    %0A\n     def \n",
             "lines": "29"
+        },
+        {
+            "label": "2025-11-25_14-22-22",
+            "content": "class Fone:\n    def __init__(self, id: str, number: str):\n        self.id: str\n        self.number: str\n    \n    \n    def getId(self) -> str:\n        return self.id\n    def getNumber(self) -> str:\n        return self.number\n    \n    def __str__(self) -> str:\n        return f\"{self.id}:{self.number}\"\n    \nclass Contact:\n    def __init__(self, name: str):\n        self.name: str\n        self.favorited: bool\n        self.fones: list[Fone] =[] \n\n    def addFone(id: str, number: str) -> None:\n        self.fones.append(Fone(id, number))\n\n\n    def getName(self) -> str:\n        return self.name\n    \n\n    def __str__(self) -> str:\n        return f\"\"",
+            "lines": "30"
         }
     ]
 }
