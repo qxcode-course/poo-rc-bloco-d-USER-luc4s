@@ -58,13 +58,30 @@ class Contact:
 class Agenda:
     def __init__(self):
         self.contacts: list[Contact] = []
+    
+    def findPosByName(self, name: str) -> int:
+        for i, contact in enumerate(self.contacts):
+            if contact.getName == name:
+                return i
+            else:
+                return -1
 
     def addContact(self, name: str, fones: list[Fone]):
-        .
+        pos = self.findPosByName(name)
+        if pos == -1:
+            self.contacts.append(Contact(name, fones))
+        else:
+            self.contacts[pos].fones = fones
+
     def getContact(self, name: str) -> Contact | None:
-        return name
+        pos = self.findPosByName(name)
+        if pos == -1:
+            return None
+        else:
+            return self.contacts[pos]
 
     def rmContact(self, name: str):
-        
+        pos = self.findPosByName(name)
+        if     
 
     
