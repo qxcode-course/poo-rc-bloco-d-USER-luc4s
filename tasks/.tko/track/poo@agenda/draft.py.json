@@ -1,0 +1,9 @@
+{
+    "patches": [
+        {
+            "label": "2025-11-28_19-31-50",
+            "content": "class Fone:\n    def __init__(self, id: str, number: str):\n        self.id = id\n        self.number = number\n    \n    def isValid(self) -> bool:\n        valido = \"0123456789()-.\"\n        for i in self.number:\n            if i not in valido:\n                return False\n        return True\n\n    def getId(self) -> str:\n        return self.id\n    def getNumber(self) -> str:\n        return self.number\n    \n    def __str__(self) -> str:\n        return f\"{self.id}:{self.number}\"\n    \nclass Contact:\n    def __init__(self, name: str):\n        self.name = name\n        self.favorited = False\n        self.fones: list[Fone] =[] \n\n    def addFone(self, id: str, number: str) -> None:\n        fone = Fone(id, number)\n        if fone.isValid():\n            self.fones.append(fone)\n        else:\n            print(\"fail: invalid number\")\n\n    def rmFone(self, index: int) -> None:\n        if 0 <= index < len(self.fones):\n            self.fones.pop(index)\n        else:\n            print(\"fail: indice invalido\")\n    \n    def toogleFavorited(self) -> None:\n        self.favorited = not self.favorited\n    \n    def isFavorited(self) -> bool:\n        return True\n    \n    def getFones(self) -> list:\n        return self.fones\n    def getName(self) -> str:\n        return self.name\n    def setName(self, name: str) -> None:\n        self.name = name\n\n    def __str__(self) -> str:\n        fav = \"@\" if self.favorited else \"-\"\n        fones_str = \", \".join(str(f) for f in self.fones)\n        return f\"{fav} {self.name} [{fones_str}]\"\n    \nclass Agenda:\n    ",
+            "lines": "59"
+        }
+    ]
+}
