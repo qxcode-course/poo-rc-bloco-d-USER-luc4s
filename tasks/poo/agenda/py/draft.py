@@ -61,7 +61,7 @@ class Agenda:
     
     def findPosByName(self, name: str) -> int:
         for i, contact in enumerate(self.contacts):
-            if contact.getName == name:
+            if contact.getName() == name:
                 return i
             else:
                 return -1
@@ -76,12 +76,34 @@ class Agenda:
     def getContact(self, name: str) -> Contact | None:
         pos = self.findPosByName(name)
         if pos == -1:
-            return None
+            contact = Contact(name)
+            contact.fones = fones
+            self.contacts.append(contact)    
         else:
-            return self.contacts[pos]
+            return self.contacts[pos].fones = fones
 
     def rmContact(self, name: str):
         pos = self.findPosByName(name)
-        if     
+        if pos == -1:
+            print("fail")
+        else:
+            self.contacts.pop(pos)
+
+
+    def getContact(self) -> list[Contact]:
+        return list[Contact]
+def main():
+    agenda: None
+    while True:
+        line = input()
+        print(f"${line}")
+        args = line.split()
+
+        if args[0] == "end":
+            break
+        elif args[0] == "init":
+
+        elif args[0] == "show":
+            print(agenda)
 
     
