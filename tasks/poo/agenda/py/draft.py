@@ -63,8 +63,7 @@ class Agenda:
         for i, contact in enumerate(self.contacts):
             if contact.getName() == name:
                 return i
-            else:
-                return -1
+        return -1
 
     def addContact(self, name: str, fones: list[Fone]):
         pos = self.findPosByName(name)
@@ -76,11 +75,8 @@ class Agenda:
     def getContact(self, name: str) -> Contact | None:
         pos = self.findPosByName(name)
         if pos == -1:
-            contact = Contact(name)
-            contact.fones = fones
-            self.contacts.append(contact)    
-        else:
-            return self.contacts[pos].fones = fones
+            return None
+        return self.contacts[pos]
 
     def rmContact(self, name: str):
         pos = self.findPosByName(name)
@@ -89,11 +85,16 @@ class Agenda:
         else:
             self.contacts.pop(pos)
 
-
+    def getFavorited(self) -> list[Contact]:
+        return [f for f in self.contacts if f.isFavorited()]
     def getContact(self) -> list[Contact]:
         return list[Contact]
+
+    def __str__(self) -> str:
+        return ", ".join(str(f) for f in self.contacts)
+
 def main():
-    agenda: None
+    agenda = None
     while True:
         line = input()
         print(f"${line}")
@@ -102,8 +103,12 @@ def main():
         if args[0] == "end":
             break
         elif args[0] == "init":
-
+            agenda = Agenda(args[1])
         elif args[0] == "show":
             print(agenda)
+        elif args[0] == "add":
+            agenda.addContact(args[1], args[2])
+        elif args[0] == "rm":
+            agenda.rmContact(args[1], args[2])
 
-    
+main()   
