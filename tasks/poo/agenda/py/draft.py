@@ -98,10 +98,10 @@ class Agenda:
             if pattern in c.getName():
                 resultado.append(c)
                 continue
-        for f in c.getFones():
-            if pattern in f.getId() or pattern in f.getNumber():
-                resultado.append(c)
-                break
+            for f in c.getFones():
+                if pattern in f.getId() or pattern in f.getNumber():
+                    resultado.append(c)
+                    break
         return resultado
 
 
@@ -128,7 +128,7 @@ def main():
         elif args[0] == "show":
             print(agenda)
         elif args[0] == "add":
-            name = args[1]
+            name = args[1].strip()
             fones = []
             for raw in args[2:]:
                 if ":" in raw:
@@ -145,7 +145,7 @@ def main():
                 contato.rmFone(index)
             else:
                 print("fail: contato nao existe")
-        elif args[0] == "fav":
+        elif args[0] in ("fav", "tfav"):
             contato = agenda.getContact(args[1])
             if contato:
                 contato.toogleFavorited()
