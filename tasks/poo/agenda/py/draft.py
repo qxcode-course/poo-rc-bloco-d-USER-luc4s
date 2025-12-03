@@ -75,6 +75,7 @@ class Agenda:
         else:
             for f in fones:
                 self.contacts[pos].addFone(f.id, f.number)
+        self.contacts = sorted(self.contacts, key=lambda x: x.name)
 
     def getContact(self, name: str) -> Contact | None:
         pos = self.findPosByName(name)
@@ -103,17 +104,17 @@ class Agenda:
                     resultado.append(c)
                     break
         return resultado
-
-
+    
+    def favs(self) -> str:
+        return "\n".join(str(c) for c in self.contacts if c.isFavorited())
+    
     def getContacts(self) -> list[Contact]:
         return self.contacts[:]
 
     def __str__(self) -> str:
-        resultado = []
-        for c in sorted(self.contacts, key=lambda x: x.name):
-           resultado.append(str(c))
-        return "\n".join(resultado)
+        return "\n".join(str(c) for c in self.contacts)
 
+        
 def main():
     agenda = Agenda()
     while True:
@@ -159,5 +160,7 @@ def main():
         elif args[0] == "showFavs":
             for c in agenda.getFavorited():
                 print(c)
+        elif args[0] == "favs":
+            print(agenda.favs())
 
 main()   
